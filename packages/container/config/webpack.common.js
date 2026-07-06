@@ -19,7 +19,6 @@ export default {
 
   plugins: [
     new HtmlWebPackPlugin({
-      publicPath: "container/latest/",
       template: "./public/index.html",
     }),
   ],
