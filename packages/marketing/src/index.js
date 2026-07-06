@@ -1,2 +1,2 @@
 import("./bootstrap");
-console.log("marketing");
+console.log("marketing app loaded");
