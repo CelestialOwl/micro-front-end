@@ -3,15 +3,19 @@ import webpack from "webpack";
 import packageJSON from "../package.json" with { type: "json" };
 import CommonWebpack from "./webpack.common.js";
 
-const domain = process.env.PRODUCTION_DOMAIN;
+const domain = process.env.PRODUCTION_DOMAIN ?? "kappachungus";
+
+console.log("process domain", process.env.PRODUCTION_DOMAIN);
 
 const { ModuleFederationPlugin } = webpack.container;
+
+console.log("domain is", domain);
 
 const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: "container/latest/",
+    publicPath: "/container/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
