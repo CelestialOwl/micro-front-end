@@ -6,10 +6,10 @@ import packageJSON from "../package.json" with { type: "json" };
 const { ModuleFederationPlugin } = webpack.container;
 
 const prodConfig = {
-  mode: "production",
+  mode: "development",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: "marketing/latest/",
+    publicPath: "keting/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
