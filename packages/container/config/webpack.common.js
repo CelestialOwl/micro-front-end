@@ -1,3 +1,5 @@
+import HtmlWebPackPlugin from "html-webpack-plugin";
+
 export default {
   module: {
     rules: [
@@ -14,4 +16,10 @@ export default {
       },
     ],
   },
+
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };

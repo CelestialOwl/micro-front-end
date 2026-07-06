@@ -1,5 +1,4 @@
 import { merge } from "webpack-merge";
-import HtmlWebPackPlugin from "html-webpack-plugin";
 import CommonWebpack from "./webpack.common.js";
 import webpack from "webpack";
 import packageJson from "../package.json" with { type: "json" };
@@ -14,9 +13,6 @@ const devConfig = {
     },
   },
   plugins: [
-    new HtmlWebPackPlugin({
-      template: "./public/index.html",
-    }),
     new ModuleFederationPlugin({
       name: "container",
       shared: packageJson.dependencies,
