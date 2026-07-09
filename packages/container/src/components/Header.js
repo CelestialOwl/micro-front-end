@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link as RouterLink, BrowserRouter } from "react-router-dom";
+import { Link as RouterLink, useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   "@global": {
@@ -56,6 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ signedIn, onSignOut }) {
   const classes = useStyles();
+  const history = useHistory();
 
   const onClick = () => {
     if (signedIn && onSignOut) {
@@ -65,36 +66,37 @@ export default function Header({ signedIn, onSignOut }) {
 
   return (
     <React.Fragment>
-      <BrowserRouter>
-        <AppBar
-          position="static"
-          color="default"
-          elevation={0}
-          className={classes.appBar}
-        >
-          <Toolbar className={classes.toolbar}>
+      <AppBar
+        position="static"
+        color="default"
+        elevation={0}
+        className={classes.appBar}
+      >
+        <Toolbar className={classes.toolbar}>
+          <RouterLink to="/">
             <Typography
               variant="h6"
               color="inherit"
               noWrap
-              // component={RouterLink}
+              component={RouterLink}
               to="/"
             >
               App
             </Typography>
-            <Button
-              color="primary"
-              variant="outlined"
-              className={classes.link}
-              // component={RouterLink}
-              to={signedIn ? "/" : "/auth/signin"}
-              onClick={onClick}
-            >
-              {signedIn ? "Logout" : "Login"}
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </BrowserRouter>
+          </RouterLink>
+
+          <Button
+            color="primary"
+            variant="outlined"
+            className={classes.link}
+            component={RouterLink}
+            to={signedIn ? "/" : "/auth/signin"}
+            onClick={onClick}
+          >
+            {signedIn ? "Logout" : "Login"}
+          </Button>
+        </Toolbar>
+      </AppBar>
     </React.Fragment>
   );
 }
