@@ -2,7 +2,7 @@ import React from "react";
 import { mount } from "auth/AuthApp";
 import { useHistory } from "react-router-dom";
 
-const Market = () => {
+const AuthApp = ({ onSignIn }) => {
   const ref = React.useRef(null);
   const history = useHistory();
 
@@ -13,6 +13,7 @@ const Market = () => {
         onNavigate: (arg) => {
           history.push(arg.pathname);
         },
+        onSignIn,
       });
       history.listen(onParentNavigate);
     }
@@ -21,4 +22,4 @@ const Market = () => {
   return <div ref={ref} />;
 };
 
-export default Market;
+export default AuthApp;
