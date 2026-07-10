@@ -1,5 +1,5 @@
 import React from "react";
-import { mount } from "marketing/Marketing";
+import { mount } from "auth/AuthApp";
 import { useHistory } from "react-router-dom";
 
 const Market = () => {
